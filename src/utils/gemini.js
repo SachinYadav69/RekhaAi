@@ -1,35 +1,69 @@
+// export const generatePrediction = async (userData) => {
+//   const API_KEY = import.meta.env.VITE_GEMINI_KEY;
+
+//   try {
+//     // Ye line check karegi ki aapki key ko kaun-kaun se models allow hain
+//     const listUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${API_KEY}`;
+//     const listRes = await fetch(listUrl);
+//     const listData = await listRes.json();
+    
+//     console.log("Available Models for your Key:", listData);
+
+//     // Agar models mil gaye, toh pehla available model uthao
+//     if (listData.models && listData.models.length > 0) {
+//       // Hum wahi model use karenge jo list mein sabse upar hai (usually flash)
+//       const activeModel = listData.models.find(m => m.name.includes("flash")) || listData.models[0];
+      
+//       const API_URL = `https://generativelanguage.googleapis.com/v1beta/${activeModel.name}:generateContent?key=${API_KEY}`;
+
+//       const response = await fetch(API_URL, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({
+//           contents: [{ parts: [{ text: `Give a short 50-word astrology reading for ${userData.name}` }] }]
+//         }),
+//       });
+
+//       const data = await response.json();
+//       return data.candidates[0].content.parts[0].text;
+//     } else {
+//       return "Error: No models assigned to this API Key. Please create a new key in AI Studio.";
+//     }
+//   } catch (err) {
+//     return "Celestial Connection Failed.";
+//   }
+// };
+
+
+
 export const generatePrediction = async (userData) => {
   const API_KEY = import.meta.env.VITE_GEMINI_KEY;
+  // Direct URL use kar rahe hain bina list check kiye
+  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
   try {
-    // Ye line check karegi ki aapki key ko kaun-kaun se models allow hain
-    const listUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${API_KEY}`;
-    const listRes = await fetch(listUrl);
-    const listData = await listRes.json();
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ 
+          parts: [{ 
+            text: `You are Rekha AI, a mystical Vedic Astrologer. Analyze these details: Name: ${userData.name}, DOB: ${userData.dob}, Time: ${userData.tob}, Place: ${userData.pob}. Provide a 60-word prediction about their destiny and one divine remedy.` 
+          }] 
+        }]
+      }),
+    });
+
+    const data = await response.json();
     
-    console.log("Available Models for your Key:", listData);
-
-    // Agar models mil gaye, toh pehla available model uthao
-    if (listData.models && listData.models.length > 0) {
-      // Hum wahi model use karenge jo list mein sabse upar hai (usually flash)
-      const activeModel = listData.models.find(m => m.name.includes("flash")) || listData.models[0];
-      
-      const API_URL = `https://generativelanguage.googleapis.com/v1beta/${activeModel.name}:generateContent?key=${API_KEY}`;
-
-      const response = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: `Give a short 50-word astrology reading for ${userData.name}` }] }]
-        }),
-      });
-
-      const data = await response.json();
+    // Check if output is correct
+    if (data.candidates && data.candidates[0].content.parts[0].text) {
       return data.candidates[0].content.parts[0].text;
     } else {
-      return "Error: No models assigned to this API Key. Please create a new key in AI Studio.";
+      return "The universe is silent. Please try again later.";
     }
   } catch (err) {
+    console.error("API Error:", err);
     return "Celestial Connection Failed.";
   }
 };

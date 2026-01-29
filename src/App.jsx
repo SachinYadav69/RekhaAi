@@ -14,7 +14,6 @@ function App() {
     <Router>
       <div className="bg-[#050201] min-h-screen">
         <Navbar />
-
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/pricing" element={<Pricing />} />
