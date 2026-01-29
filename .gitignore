@@ -1,24 +1,26 @@
-# Logs
-logs
-*.log
+# API Keys aur Secrets (Sabse Zaroori)
+.env
+.env.local
+.env.*.local
+
+# Dependency Folders (Ye GitHub pe nahi bhejte, npm install se khud aa jati hain)
+node_modules/
+jspm_packages/
+
+# Build Output (Jab project deploy hota hai tab banti hain)
+dist/
+build/
+.vercel
+.netlify
+
+# Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
+# Editor settings (Aapke VS Code ki personal settings)
+.vscode/
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
-*.sln
-*.sw?
