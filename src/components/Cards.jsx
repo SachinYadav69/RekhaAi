@@ -7,6 +7,7 @@ import {
   ShieldAlert,
   MessageSquareQuote,
 } from "lucide-react";
+import { Link, Links } from "react-router-dom";
 
 const Cards = () => {
   const offerings = [
@@ -84,9 +85,11 @@ const Cards = () => {
 
         {/*  CTA */}
         <div className="mt-16 flex justify-center">
-          <button className="bg-white text-black px-10 py-4 font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-zinc-200 transition-all shadow-xl">
-            Experience Now
-          </button>
+          <Link to="/TryForFree">
+            <button className="bg-white text-black px-10 py-4 font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-zinc-200 transition-all shadow-xl">
+              Experience Now
+            </button>
+          </Link>
         </div>
       </div>
     </div>

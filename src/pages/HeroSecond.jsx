@@ -3,6 +3,7 @@ import { MoveRight } from "lucide-react";
 import BabaImage from "../../public/Assets/Baba.png";
 import Cards from "../components/Cards";
 import Planets from "../components/Planets";
+import { Link } from "react-router-dom";
 
 const HeroSecond = () => {
   const planets = [
@@ -93,10 +94,12 @@ const HeroSecond = () => {
             ))}
           </div>
 
-          <button className="group flex items-center gap-6 bg-white text-black w-fit px-10 py-5 font-black uppercase text-[10px] tracking-[0.3em] hover:bg-orange-600 hover:text-white transition-all duration-500">
-            Launch Analysis{" "}
-            <MoveRight className="group-hover:translate-x-2 transition-transform" />
-          </button>
+          <Link to="/methodology">
+            <button className="group flex items-center gap-6 bg-white text-black w-fit px-10 py-5 font-black uppercase text-[10px] tracking-[0.3em] hover:bg-orange-600 hover:text-white transition-all duration-500">
+              Launch Analysis{" "}
+              <MoveRight className="group-hover:translate-x-2 transition-transform" />
+            </button>
+          </Link>
         </div>
       </main>
 

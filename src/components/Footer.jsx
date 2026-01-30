@@ -1,6 +1,7 @@
 import React from "react";
 import { Instagram, Twitter, Mail, ArrowUpRight } from "lucide-react";
 import Rekha from "../../public/Assets/Rekha.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -51,11 +52,16 @@ const Footer = () => {
                   About Us
                 </a>
               </li>
+
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a
+                  href="/methodology"
+                  className="hover:text-white transition-colors"
+                >
                   Methodology
                 </a>
               </li>
+
               <li>
                 <a href="#" className="hover:text-white transition-colors">
                   Privacy Policy
