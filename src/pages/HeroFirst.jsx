@@ -47,7 +47,7 @@
 // };
 
 // export default HeroFirst;
-
+////////////////////////////////////////////////////////////////////////
 import React from "react";
 import { Sparkles, ChevronRight } from "lucide-react";
 import { LightLines } from "../components/light-lines";
@@ -104,6 +104,11 @@ const HeroFirst = () => {
             </button>
           </Link>
         </div>
+        <Link to="/tryforfree">
+          <button className="px-8 py-3 mt-10 rounded-full font-semibold border border-zinc-800 hover:bg-zinc-900 transition-all text-zinc-400">
+            Check your Stars now
+          </button>
+        </Link>
       </main>
     </div>
   );
