@@ -1,7 +1,9 @@
 import React from "react";
 import { Check, Sparkles, HelpCircle, Tag, Users } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Pricing = () => {
+  const navigate = useNavigate();
   const plans = [
     {
       name: "Seeker",
@@ -48,11 +50,10 @@ const Pricing = () => {
 
   return (
     <div className="min-h-screen bg-[#050201] text-white pt-10 pb-20 px-8 relative overflow-hidden">
-      {/* Background Decorative Glows */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-orange-900/10 blur-[100px] -z-10 rounded-full"></div>
 
       <div className="max-w-7xl mx-auto">
-        {/* Discount Banner */}
+        {/* Discount Badge */}
         <div className="mb-12 flex justify-center">
           <div className="bg-orange-600/10 border border-orange-500/20 px-6 py-2 rounded-full flex items-center gap-3">
             <Tag size={14} className="text-orange-500" />
@@ -114,7 +115,13 @@ const Pricing = () => {
                 ))}
               </div>
               <button
-                className={`w-full py-5 font-black uppercase text-[10px] tracking-[0.3em] transition-all ${plan.highlight ? "bg-white text-black hover:bg-orange-600 hover:text-white" : "bg-transparent border border-zinc-800 text-white hover:bg-white hover:text-black"}`}
+                type="button"
+                onClick={() => navigate("/checkout", { state: plan })}
+                className={`w-full py-5 font-black uppercase text-[10px] tracking-[0.3em] transition-all ${
+                  plan.highlight
+                    ? "bg-white text-black hover:bg-orange-600 hover:text-white"
+                    : "bg-transparent border border-zinc-800 text-white hover:bg-white hover:text-black"
+                }`}
               >
                 {plan.button}
               </button>

@@ -8,6 +8,8 @@ import Methodolgy from "./pages/Methodolgy";
 import TryForFree from "./pages/TryForFree";
 import Footer from "./components/Footer";
 import Results from "./pages/Results";
+import Checkout from "./components/Checkout";
+import Success from "./pages/Success";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/methodology" element={<Methodolgy />} />
           <Route path="/tryforfree" element={<TryForFree />} />
           <Route path="/results" element={<Results />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/success" element={<Success />} />
         </Routes>
         <Footer />
       </div>

@@ -30,7 +30,7 @@ const TryForFree = () => {
         text: "Account Created! Login Now.",
         type: "success",
       });
-      setIsSignup(false); // Direct Login mode par bhej dega
+      setIsSignup(false);
     } else {
       // Login Logic
       const user = users.find(
